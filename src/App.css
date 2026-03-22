@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.todo-app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.app-header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+.app-header p {
+    margin: 0.5rem 0 0;
+    color: #7f8c8d;
+}
+
+.todo-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.todo-title {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #34495e;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.todo-input:focus {
+    border-color: #3498db;
+}
+
+.todo-add-btn {
+    padding: 0.75rem 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.todo-add-btn:hover {
+    background-color: #2980b9;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.todo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.todo-item-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.todo-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.todo-text {
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.todo-item.completed {
+    border-left: 4px solid #2ecc71;
+    background-color: #f0fff4;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+.todo-delete-btn{
+    background-color: transparent;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.todo-delete-btn:hover{
+    background-color: #e74c3c; color: white;
+}
