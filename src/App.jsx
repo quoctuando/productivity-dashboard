@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import PomodoroTimer from "./PomodoroTimer";
 import HabitTracker from "./HabitTracker";
@@ -43,6 +43,8 @@ function App() {
         localStorage.setItem("dashboardTasks", JSON.stringify(tasks));
     }, [tasks]); // [tasks] ở đây có nghĩa là: "Chỉ chạy đoạn code trên khi 'tasks' bị thay đổi"
 
+    const inputRef = useRef();
+
     // Hàm xử lý khi bấm nút "Thêm"
     const handleAddTask = () => {
         if (inputValue.trim() === "") return;
@@ -56,6 +58,7 @@ function App() {
         // Cập nhật danh sách: copy mảng cũ (...tasks) và thêm task mới vào cuối
         setTasks([...tasks, newTask]);
         setInputValue("");
+        inputRef.current.focus();
     };
 
     // Hàm xử lý khi đánh dấu hoàn thành (tick vào ô checkbox)
@@ -97,6 +100,7 @@ function App() {
 
                 <div className="todo-input-group">
                     <input
+                        ref={inputRef}
                         type="text"
                         className="todo-input"
                         placeholder="Enter your tasks..."
