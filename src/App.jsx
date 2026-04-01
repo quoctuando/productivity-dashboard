@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import PomodoroTimer from "./PomodoroTimer";
 import HabitTracker from "./HabitTracker";
+import HydrationTracker from "./HydrationTracker";
 
 function App() {
     // 1. Khởi tạo state chứa danh sách công việc
@@ -93,6 +94,7 @@ function App() {
             </header>
 
             <PomodoroTimer />
+            <HydrationTracker />
             <HabitTracker />
 
             <div className="todo-container">

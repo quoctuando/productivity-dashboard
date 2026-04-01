@@ -1,0 +1,116 @@
+/* src/HydrationTracker.css */
+.tracker-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.tracker-title {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tracker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.tracker-card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tracker-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+/* Style cho phần Nước */
+.water-card {
+  background-color: #ebf5fb;
+  border: 1px solid #d6eaf8;
+}
+
+.water-display {
+  margin: 1rem 0;
+}
+
+.water-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.water-unit {
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+.water-visual {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.water-drop {
+  opacity: 0.3;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.water-drop.filled {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+/* Style cho phần Không Đường */
+.sugar-card {
+  background-color: #fef5e7;
+  border: 1px solid #fae5d3;
+}
+
+.streak-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+
+.streak-icon { font-size: 2.5rem; }
+.streak-number { font-size: 3rem; font-weight: bold; color: #e67e22; }
+.streak-unit { font-size: 1.2rem; color: #d35400; font-weight: bold; }
+
+/* Nút bấm chung */
+.btn-action {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-action:hover { opacity: 0.8; }
+
+.water-btn { background-color: #3498db; color: white; width: 100%; }
+.streak-btn { background-color: #e67e22; color: white; width: 100%; margin-bottom: 10px; }
+.reset-btn { background-color: transparent; color: #e74c3c; border: 1px solid #e74c3c; width: 100%; }
+.reset-btn:hover { background-color: #fdedf0; }
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .tracker-grid {
+    grid-template-columns: 1fr; /* Biến 2 cột thành 1 cột xếp chồng lên nhau */
+  }
+}

@@ -64,3 +64,24 @@
 .btn-secondary:hover {
   background-color: #bdc3c7;
 }
+
+@media (max-width: 768px) {
+  .pomodoro-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .time-display {
+    font-size: 3rem; /* Thu nhỏ đồng hồ lại một chút */
+    margin: 1rem 0;
+  }
+
+  .pomodoro-controls {
+    flex-direction: column; /* Hai nút Bắt đầu và Làm mới xếp dọc */
+    gap: 10px;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    padding: 1rem;
+  }
+}

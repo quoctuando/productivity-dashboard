@@ -1,16 +1,47 @@
-# React + Vite
+# 🚀 Productivity Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ứng dụng bảng điều khiển năng suất cá nhân (Productivity Dashboard) được xây dựng bằng ReactJS. Dự án này giúp quản lý thời gian, theo dõi công việc và duy trì các thói quen lành mạnh hàng ngày một cách trực quan.
 
-Currently, two official plugins are available:
+🔗 **[Xem Live Demo tại đây](#)** *(Thay dấu # bằng đường link Vercel của bạn)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Tính năng nổi bật
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Quản lý Công việc (To-Do List):** Thêm, xóa và đánh dấu hoàn thành các công việc hằng ngày.
+- **Đồng hồ đếm ngược Pomodoro:** Tối ưu hóa sự tập trung với phương pháp làm việc 25 phút.
+- **Theo dõi Thói quen (Habit Tracker):** Hệ thống đánh dấu trực quan theo từng ngày trong tuần để duy trì các mục tiêu cá nhân.
+- **Theo dõi Sức khỏe (Hydration & Streak):** Đếm số ly nước uống trong ngày và duy trì chuỗi ngày (streak) không sử dụng đồ uống có đường, tự động làm mới khi qua ngày mới.
+- **Giao diện Responsive:** Hiển thị mượt mà và tối ưu trên cả giao diện máy tính và thiết bị di động.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Công nghệ sử dụng
+
+- **Frontend:** ReactJS (Hooks: `useState`, `useEffect`)
+- **Build Tool:** Vite
+- **Styling:** CSS3 (Flexbox & CSS Grid)
+- **Lưu trữ dữ liệu:** Trình duyệt Web Storage API (`localStorage`)
+
+---
+
+## 💻 Hướng dẫn cài đặt và chạy trên máy cá nhân
+
+Nếu bạn muốn tải mã nguồn này về và chạy thử trên máy tính của mình, hãy làm theo các bước sau:
+
+1. Clone dự án về máy:
+   ```bash
+   git clone [https://github.com/ten-cua-ban/productivity-dashboard.git](https://github.com/ten-cua-ban/productivity-dashboard.git)
+2. Di chuyển vào thư mục dự án:
+   ```bash
+   cd portfolio-todo
+3. Cài đặt các thư viện cần thiết:
+   ```bash
+   npm install
+   # hoặc yarn install / pnpm install
+4. Chạy dự án:
+   ```bash
+   npm run dev
+   # hoặc yarn dev / pnpm dev
+---
+Được phát triển bởi Tuấn Quốc.

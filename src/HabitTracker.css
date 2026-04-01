@@ -75,3 +75,29 @@
     background-color: #9b59b6;
     box-shadow: 0 2px 8px rgba(155, 89, 182, 0.4);;
 }
+
+@media (max-width: 768px) {
+  .habit-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .habit-header-row, .habit-row {
+    flex-direction: column; /* Đẩy danh sách ngày xuống dưới tên thói quen */
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0; /* Thêm đường viền mờ để phân cách các thói quen */
+  }
+
+  .habit-name-header, .habit-name {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+  }
+
+  .habit-days-header, .habit-days {
+    width: 100%; /* Đảm bảo 7 ô vuông chiếm trọn chiều rộng mới */
+  }
+}

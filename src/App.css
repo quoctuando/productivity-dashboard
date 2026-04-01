@@ -145,3 +145,39 @@ body {
 .todo-delete-btn:hover{
     background-color: #e74c3c; color: white;
 }
+
+/* Tối ưu cho màn hình điện thoại (dưới 768px) */
+@media (max-width: 768px) {
+  .todo-app {
+    padding: 1rem; /* Giảm padding hai bên để có thêm không gian hiển thị */
+  }
+
+  .app-header {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .todo-container {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Chuyển ô nhập liệu và nút Thêm thành xếp dọc */
+  .todo-input-group {
+    flex-direction: column; 
+  }
+
+  .todo-add-btn {
+    width: 100%; /* Nút bấm trải dài toàn màn hình */
+    padding: 1rem;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .todo-delete-btn {
+    width: 100%; /* Nút Xóa cũng trải dài để dễ thao tác */
+  }
+}
