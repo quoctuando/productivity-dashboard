@@ -29,14 +29,14 @@ const HabitTracker = () => {
         }
     });
 
-    // Lưu vào localStorage mỗi khi có thay đổi
+    // Save to localStorage whenever changes occur
     useEffect(
         () => {
             localStorage.setItem('dashboardHabits',JSON.stringify(habits))
         }, [habits]
     )
 
-    // Hàm xử lý khi click vào một ô ngày của một thói quen
+    // Event handling functions
     const toggleHabitDay = (habitId,dayIndex) => {
         const updatedHabits = habits.map(
             habit => {
@@ -55,7 +55,6 @@ const HabitTracker = () => {
         <div className="habit-container">
             <h2 className="habit-title">Theo dõi thói quen</h2>
             <div className="habit-grid">
-                {/* Hàng tiêu đề các ngày trong tuần */}
                 <div className="habit-header-row">
                     <div className="habit-name-header">
                         Thói quen
@@ -72,7 +71,6 @@ const HabitTracker = () => {
                     </div>
                 </div>
 
-                {/* Danh sách các thói quen */}
                 {
                     habits.map(
                         habit => (

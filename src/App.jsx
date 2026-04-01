@@ -5,12 +5,12 @@ import HabitTracker from "./HabitTracker";
 import HydrationTracker from "./HydrationTracker";
 
 function App() {
-    // 1. Khởi tạo state chứa danh sách công việc
+    // Initialize state to store the task list
     const [tasks, setTasks] = useState(() => {
         const savedTasks = localStorage.getItem("dashboardTasks");
 
-        // Nếu có dữ liệu cũ, chuyển từ chuỗi JSON về mảng JS.
-        // Nếu chưa có, dùng mảng mặc định.
+        // If there is existing data, convert it from a JSON string back into a JavaScript array
+        // If not, use the default array
         if (savedTasks) {
             return JSON.parse(savedTasks);
         } else {
@@ -34,19 +34,19 @@ function App() {
         }
     });
 
-    // 2. Khởi tạo state để theo dõi ô nhập liệu
+    // Initialize state to track the input field
     const [inputValue, setInputValue] = useState("");
 
-    // 3. Sử dụng useEffect để tự động lưu dữ liệu mỗi khi mảng 'tasks' thay đổi
+    // Use useEffect to automatically save data whenever the tasks array changes
     useEffect(() => {
-        // Biến mảng tasks thành chuỗi JSON
-        // và lưu vào localStorage với tên 'dashboardTasks'
+        // Convert the tasks array into a JSON string
+        // and save it to localStorage under the name 'dashboardTasks'
         localStorage.setItem("dashboardTasks", JSON.stringify(tasks));
-    }, [tasks]); // [tasks] ở đây có nghĩa là: "Chỉ chạy đoạn code trên khi 'tasks' bị thay đổi"
+    }, [tasks]);
 
     const inputRef = useRef();
 
-    // Hàm xử lý khi bấm nút "Thêm"
+    // Event handling functions
     const handleAddTask = () => {
         if (inputValue.trim() === "") return;
 
@@ -56,13 +56,11 @@ function App() {
             completed: false,
         };
 
-        // Cập nhật danh sách: copy mảng cũ (...tasks) và thêm task mới vào cuối
         setTasks([...tasks, newTask]);
         setInputValue("");
         inputRef.current.focus();
     };
 
-    // Hàm xử lý khi đánh dấu hoàn thành (tick vào ô checkbox)
     const handleToggleTask = (taskId) => {
         const updatedTasks = tasks.map((task) => {
             if (task.id === taskId) {
@@ -73,13 +71,11 @@ function App() {
         setTasks(updatedTasks);
     };
 
-    // Hàm xử lý khi bấm nút "Xóa"
     const handleDeleteTask = (taskId) => {
         const filteredTasks = tasks.filter((task) => task.id !== taskId);
         setTasks(filteredTasks);
     };
 
-    // Cho phép nhấn Enter để thêm công việc
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             handleAddTask();

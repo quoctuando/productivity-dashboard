@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import "./HydrationTracker.css";
 
 const HydrationTracker = () => {
-    // 1. Khởi tạo State từ localStorage
+    // Initialize state from localStorage
     const [waterCount, setWaterCount] = useState(() => {
         const today = new Date().toDateString();
         const savedDate = localStorage.getItem("lastActiveDate");
         const savedWater = localStorage.getItem("waterCount");
 
-        // Nếu là ngày mới -> Reset về 0 và cập nhật ngày
+        // If it's a new day, reset to 0 and update the date
         if (today !== savedDate) {
             localStorage.setItem("lastActiveDate", today);
             localStorage.setItem("waterCount", "0");
             return 0;
         }
 
-        // Nếu vẫn trong cùng 1 ngày -> Lấy số lượng cũ
+        // If it's still the same day, use the existing value.
         return savedWater ? parseInt(savedWater, 10) : 0;
     });
 
@@ -24,31 +24,13 @@ const HydrationTracker = () => {
         return savedStreak ? parseInt(savedStreak, 10) : 0;
     });
 
-    // const [lastActiveDate, setLastActiveDate] = useState(() => {
-    //     return (
-    //         localStorage.getItem("lastActiveDate") || new Date().toDateString()
-    //     );
-    // });
-
-    // Tuan quoc: Review this logic again.
-    // 2. Logic kiểm tra ngày mới để reset ly nước
-    // useEffect(() => {
-    //     const today = new Date().toDateString();
-    //     if (today !== lastActiveDate) {
-    //         // Reset water to 0 when a new day starts.
-    //         setWaterCount(0);
-    //         setLastActiveDate(today);
-    //         localStorage.setItem('lastActiveDate',today)
-    //     }
-    // },[lastActiveDate])
-
-    // 3. Lưu dữ liệu mỗi khi state thay đổi
+    // Save data whenever the state changes
     useEffect(() => {
         localStorage.setItem("waterCount", waterCount.toString());
         localStorage.setItem("noSugarStreak", noSugarStreak.toString());
     }, [waterCount, noSugarStreak]);
 
-    // 4. Các hàm xử lý sự kiện
+    // Event handling functions
     const addWater = () => {
         if (waterCount < 10) {
             setWaterCount((prev) => prev + 1);
@@ -73,7 +55,6 @@ const HydrationTracker = () => {
         <div className="tracker-container">
             <h2 className="tracker-title">Sức khoẻ & Thói quen</h2>
             <div className="tracker-grid">
-                {/* Cột 1: Theo dõi nước uống */}
                 <div className="tracker-card water-card">
                     <h3>Nước lọc (Mục tiêu: 8 ly)</h3>
                     <div className="water-display">
@@ -81,7 +62,6 @@ const HydrationTracker = () => {
                         <span className="water-unit">/ 8 ly</span>
                     </div>
                     <div className="water-visual">
-                        {/* Render ra các icon ly nước dựa trên số đếm */}
                         {[...Array(8)].map((_, i) => (
                             <div
                                 key={i}
@@ -96,7 +76,6 @@ const HydrationTracker = () => {
                     </button>
                 </div>
 
-                {/* Cột 2: Chuỗi ngày không đường */}
                 <div className="tracker-card sugar-card">
                     <h3>Chuỗi ngày không đường</h3>
                     <div className="streak-display">
