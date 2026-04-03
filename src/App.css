@@ -146,6 +146,62 @@ body {
     background-color: #e74c3c; color: white;
 }
 
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-edit-btn {
+  background-color: transparent;
+  color: #f39c12;
+  border: 1px solid #f39c12;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.todo-edit-btn:hover {
+  background-color: #f39c12;
+  color: white;
+}
+
+/* Edit Mode Styles */
+.edit-mode-container {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-input {
+  margin-bottom: 0; /* Ghi đè margin cũ */
+  padding: 0.5rem;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.save-btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 /* Tối ưu cho màn hình điện thoại (dưới 768px) */
 @media (max-width: 768px) {
   .todo-app {

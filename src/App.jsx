@@ -37,6 +37,9 @@ function App() {
     // Initialize state to track the input field
     const [inputValue, setInputValue] = useState("");
 
+    const [editingId, setEditingId] = useState(null);
+    const [editText, setEditText] = useState("");
+
     // Use useEffect to automatically save data whenever the tasks array changes
     useEffect(() => {
         // Convert the tasks array into a JSON string
@@ -82,6 +85,27 @@ function App() {
         }
     };
 
+    const startEditing = (id, currentText) => {
+        setEditingId(id);
+        setEditText(currentText);
+    };
+
+    const saveEdit = (id) => {
+        if (editText.trim() === "") return;
+        setTasks(
+            tasks.map((task) =>
+                task.id === id ? { ...task, text: editText } : task,
+            ),
+        );
+        setEditingId(null);
+        setEditText("");
+    };
+
+    const cancelEdit = () => {
+        setEditingId(null);
+        setEditText("");
+    };
+
     return (
         <div className="todo-app">
             <header className="app-header">
@@ -120,27 +144,81 @@ function App() {
                                 key={task.id}
                                 className={`todo-item ${task.completed ? "completed" : ""}`}
                             >
-                                <div className="todo-item-content">
-                                    <input
-                                        type="checkbox"
-                                        className="todo-checkbox"
-                                        checked={task.completed}
-                                        onChange={() =>
-                                            handleToggleTask(task.id)
-                                        }
-                                    />
-                                    <span className="todo-text">
-                                        {task.text}
-                                    </span>
-                                </div>
-                                <button
-                                    className="todo-delete-btn"
-                                    onClick={() => {
-                                        handleDeleteTask(task.id);
-                                    }}
-                                >
-                                    Xóa
-                                </button>
+                                {/* Edit mode */}
+                                {editingId === task.id ? (
+                                    <div className="edit-mode-container">
+                                        <input
+                                            type="text"
+                                            className="todo-input edit-input"
+                                            value={editText}
+                                            onChange={(e) =>
+                                                setEditText(e.target.value)
+                                            }
+                                            autoFocus
+                                            onKeyDown={(e) => {
+                                                if (e.key === "Enter") {
+                                                    e.preventDefault();
+                                                    e.target.blur();
+                                                    saveEdit(task.id);
+                                                }
+                                            }}
+                                        />
+                                        <div className="edit-buttons">
+                                            <button
+                                                className="save-btn"
+                                                onClick={() =>
+                                                    saveEdit(task.id)
+                                                }
+                                            >
+                                                Lưu
+                                            </button>
+                                            <button
+                                                className="cancel-btn"
+                                                onClick={cancelEdit}
+                                            >
+                                                Hủy
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    // Normal display mode
+                                    <>
+                                        <div className="todo-item-content">
+                                            <input
+                                                type="checkbox"
+                                                className="todo-checkbox"
+                                                checked={task.completed}
+                                                onChange={() =>
+                                                    handleToggleTask(task.id)
+                                                }
+                                            />
+                                            <span className="todo-text">
+                                                {task.text}
+                                            </span>
+                                        </div>
+                                        <div className="item-actions">
+                                            <button
+                                                className="todo-edit-btn"
+                                                onClick={() =>
+                                                    startEditing(
+                                                        task.id,
+                                                        task.text,
+                                                    )
+                                                }
+                                            >
+                                                Sửa
+                                            </button>
+                                            <button
+                                                className="todo-delete-btn"
+                                                onClick={() => {
+                                                    handleDeleteTask(task.id);
+                                                }}
+                                            >
+                                                Xóa
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
                             </li>
                         );
                     })}

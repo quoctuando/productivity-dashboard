@@ -2,7 +2,7 @@
 
 Ứng dụng bảng điều khiển năng suất cá nhân (Productivity Dashboard) được xây dựng bằng ReactJS. Dự án này giúp quản lý thời gian, theo dõi công việc và duy trì các thói quen lành mạnh hàng ngày một cách trực quan.
 
-🔗 **[Xem Live Demo tại đây](https://productivity-dashboard-nine-eosin.vercel.app/)** *(Thay dấu # bằng đường link Vercel của bạn)*
+🔗 **[Xem Live Demo tại đây](https://productivity-dashboard-nine-eosin.vercel.app/)** 
 
 ---
 
