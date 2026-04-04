@@ -24,11 +24,21 @@ const HydrationTracker = () => {
         return savedStreak ? parseInt(savedStreak, 10) : 0;
     });
 
+    const [streakTitle, setStreakTitle] = useState(() => {
+        return localStorage.getItem("streakTitle") || "";
+    });
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [tempTitle, setTempTitle] = useState("");
+
     // Save data whenever the state changes
     useEffect(() => {
         localStorage.setItem("waterCount", waterCount.toString());
         localStorage.setItem("noSugarStreak", noSugarStreak.toString());
     }, [waterCount, noSugarStreak]);
+
+    useEffect(() => {
+        localStorage.setItem("streakTitle", streakTitle);
+    }, [streakTitle]);
 
     // Event handling functions
     const addWater = () => {
@@ -44,7 +54,7 @@ const HydrationTracker = () => {
     const resetStreak = () => {
         if (
             window.confirm(
-                "Bạn vừa uống đồ uống có đường phải không? Bắt đầu lại nhé, không sao cả!",
+                `Bạn có chắc chắn muốn làm mới chuỗi "${streakTitle}" và bắt đầu lại từ đầu không?`,
             )
         ) {
             setNoSugerStreak(0);
@@ -77,7 +87,39 @@ const HydrationTracker = () => {
                 </div>
 
                 <div className="tracker-card sugar-card">
-                    <h3>Chuỗi ngày không đường</h3>
+                    <div className="streak-header">
+                        {isEditingTitle ? (
+                            <input
+                                type="text"
+                                className="streak-title-input"
+                                value={tempTitle}
+                                onChange={(e) => setTempTitle(e.target.value)}
+                                autoFocus
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault();
+                                        e.target.blur(); // Ép nhả focus, sẽ tự động kích hoạt sự kiện onBlur bên dưới
+                                    }
+                                }}
+                                onBlur={() => {
+                                    setStreakTitle(tempTitle.trim());
+                                    setIsEditingTitle(false);
+                                }}
+                            />
+                        ) : (
+                            <h3
+                                className={`editable-streak-title ${streakTitle === "" ? "empty-title" : ""}`}
+                                title="Nhấn để chỉnh sửa"
+                                onClick={() => {
+                                    setTempTitle(streakTitle);
+                                    setIsEditingTitle(true);
+                                }}
+                            >
+                                {streakTitle}{" "}
+                                <span className="edit-icon-hint">✏️</span>
+                            </h3>
+                        )}
+                    </div>
                     <div className="streak-display">
                         <span className="streak-icon">🔥</span>
                         <span className="streak-number">{noSugarStreak}</span>
@@ -94,7 +136,7 @@ const HydrationTracker = () => {
                             className="btn-action reset-btn"
                             onClick={resetStreak}
                         >
-                            Lỡ uống đồ ngọt...
+                            Bắt đầu lại từ đầu
                         </button>
                     </div>
                 </div>

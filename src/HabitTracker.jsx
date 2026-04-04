@@ -9,23 +9,7 @@ const HabitTracker = () => {
         if (savedHabits) {
             return JSON.parse(savedHabits);
         } else {
-            return [
-                {
-                    id: 1,
-                    name: "Không uống nước ngọt",
-                    days: [false, false, false, false, false, false, false],
-                },
-                {
-                    id: 2,
-                    name: "Ngủ trước 23h00",
-                    days: [false, false, false, false, false, false, false],
-                },
-                {
-                    id: 3,
-                    name: "Tập giãn cơ, Cobra pose",
-                    days: [false, false, false, false, false, false, false],
-                },
-            ];
+            return [];
         }
     });
 

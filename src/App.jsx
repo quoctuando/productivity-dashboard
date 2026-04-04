@@ -14,23 +14,7 @@ function App() {
         if (savedTasks) {
             return JSON.parse(savedTasks);
         } else {
-            return [
-                {
-                    id: 1,
-                    text: "Học Web Development (7h00 - 15h00)",
-                    completed: false,
-                },
-                {
-                    id: 2,
-                    text: "Tập giãn cơ, Cobra Pose và bật nhảy",
-                    completed: false,
-                },
-                {
-                    id: 3,
-                    text: "Chuẩn bị đi ngủ trước 23h00",
-                    completed: false,
-                },
-            ];
+            return [];
         }
     });
 
