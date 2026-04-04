@@ -76,6 +76,89 @@
     box-shadow: 0 2px 8px rgba(155, 89, 182, 0.4);;
 }
 
+/* CSS for CRUD */
+.habit-header-main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.habit-input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.habit-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.habit-input:focus {
+  border-color: #9b59b6; /* Màu tím đồng bộ với Habit Tracker */
+}
+
+.add-habit-btn {
+  background-color: #9b59b6;
+  color: white;
+}
+
+/* Khu vực tên thói quen và nút bấm */
+.habit-name-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.habit-name {
+  flex: 1;
+}
+
+.habit-action-btns {
+  display: flex;
+  gap: 5px;
+  opacity: 0; /* Ẩn nút đi cho đỡ rối mắt */
+  transition: opacity 0.2s ease;
+}
+
+/* Chỉ hiện nút sửa/xóa khi di chuột vào hàng đó */
+.habit-row:hover .habit-action-btns {
+  opacity: 1; 
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+}
+
+.habit-edit-mode {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  align-items: center;
+}
+
+.edit-habit-input {
+  padding: 0.4rem;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
   .habit-container {
     padding: 1.5rem 1rem;
@@ -99,5 +182,14 @@
 
   .habit-days-header, .habit-days {
     width: 100%; /* Đảm bảo 7 ô vuông chiếm trọn chiều rộng mới */
+  }
+
+  .habit-action-btns {
+    opacity: 1; /* Trên mobile luôn hiện nút vì không có tính năng hover chuột */
+  }
+  
+  .habit-name-container {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
